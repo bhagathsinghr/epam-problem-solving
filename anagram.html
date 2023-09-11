@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        /*
+        Write a function to check if given two input to a function is anagram.
+        // LISTEN -> SILENT 
+        // TRIANGLE -> INTEGRAL
+        */
+
+        function isAnagram(str, arg) {
+            if(!str || !arg || (str.length !== arg.length)) {
+                return false;
+            }
+            let txt = {};
+            
+            for(let i=0; i < str.length; i++) {
+                txt[str[i]] = (txt[str[i]] || 0) + 1;
+            }
+
+            for(let i=0; i < arg.length; i++) {
+               if(!txt[arg[i]]) {
+                return false;
+               } else {
+                txt[arg[i]] -= 1;
+               }
+            }
+           
+            return true
+        }
+        var isAnag = isAnagram('TRIANGLE', 'INTEGRAL');
+        console.log(isAnag);
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Find the second smallest number from the given array: [10,9,2,5,3,7,101,18]. The answer is: 18
+        function secondSmallestNumber(arr) {
+            if(arr.length < 2) {
+                throw Error('Array lenght should be more than 1');
+            }
+
+            let fMin = arr[0];
+            let sMin = arr[1];
+
+            if(fMin < fMin) {
+                [fMin, sMin] = [sMin, fMin]
+            }
+
+            for(let i = 2; i < arr.length; i++) {
+                if(arr[i] < fMin) {
+                    sMin = fMin;
+                    fMin = arr[i]
+                } else if(arr[i] < sMin && arr[i] !== fMin) {
+                    sMin = arr[i]
+                }
+            }
+            return sMin;
+        }
+
+        const numbers = [10,9,2,5,3,7,101,18];
+        console.log(secondSmallestNumber(numbers)); // Output: 3
+    </script>
+</body>
+</html>
