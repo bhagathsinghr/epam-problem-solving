@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank. Return the wealth that the richest customer has.
+
+            A customer's wealth is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum wealth.
+        */
+
+        // ==== Soltions 1 ====
+        function maximumWealth(accounts) {
+            let maxWealth = 0;
+            let i = 0;
+            while ( i < accounts.length) {
+                let wealth = 0;
+                let j = 0;
+                while ( j < accounts[i].length) {
+                    wealth += accounts[i][j];
+                    j++;
+                }
+                if(wealth > maxWealth) {
+                    maxWealth = wealth
+                }
+                i++;
+            }
+            
+            return maxWealth;
+        }
+        // ==== Soltions 1  more in optimal way ====
+        function maximumWealth2(accounts) {
+           return Math.max(...accounts.map( ele => ele.reduce((x, ele) => x + ele, 0)));
+        }
+
+        var arr = [[1,2,3],[3,2,1]];
+        const res = maximumWealth(arr);
+        console.log(res);
+        const res2 = maximumWealth2(arr);
+        console.log(res2);
+
+        var arr2 = [[1,5],[7,3],[3,5]]
+
+        const res3 = maximumWealth2(arr2);
+        console.log(res3);
+
+        var arr3 = [[2,8,7],[7,1,3],[1,9,5]];
+        const res4 = maximumWealth2(arr3);
+        console.log(res4);
+    </script>
+</body>
+</html>
