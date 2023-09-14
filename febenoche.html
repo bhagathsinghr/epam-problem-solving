@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // write a program for printing fibonacci series with memoization
+
+        function fibonache(n){
+            let memoize = {};
+            function febRes(num) {
+                if (num in memoize) return memoize[num];
+                if (num <= 2) return 1;
+                memoize[num] = febRes(num - 1) + febRes(num - 2);
+                return memoize[num];
+            }
+            return febRes(n);
+        };
+        console.log(fibonache(50));
+
+    </script>
+</body>
+</html>
