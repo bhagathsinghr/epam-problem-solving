@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function isValidBracket(str) {
+            var stack = [];
+            for(let i = 0; i < str.length; i++) {
+                if(str[i] === '{') {
+                    stack.push('}');
+                } else if(str[i] === '[') {
+                    stack.push(']');
+                }else if(str[i] === '(') {
+                    stack.push(')');
+                } else if(stack.pop() !== str[i]) {
+                    return false
+                }
+            }
+            return !stack.length;
+        }
+
+        console.log('======= PRAN 22 ======'); 
+       // console.log(isValidBracket('(){}[]')); // true
+        console.log(isValidBracket('(){}[}')); // false
+        //console.log(isValidBracket('{{{[]}}}')); // true
+    </script>
+</body>
+</html>
