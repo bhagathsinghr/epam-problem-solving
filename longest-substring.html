@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        
+        function longestSubstr(str) {
+            let obj = {};
+            let max = 0;
+            let start = 0;
+
+            for(let i = 0; i < str.length; i ++) {
+                if(obj[str[i]] >= start) {
+                    start =  obj[str[i]] + 1;
+                }
+                obj[str[i]] = i;
+                let total = i - start + 1;
+                max = total > max ? total : max
+            }
+            return max;
+        }
+
+        const str0 = "abcabcbb";
+        let str1 = 'rithmschool';
+        let str2 = 'bbbbb';
+        let str3 = 'pwwkew';
+        let str4 = 'au';
+        let str5 = 'dvdf';
+        let str6 = 'anviaj';
+        
+        console.log('EEE',longestSubstr2(str0)); // output: 3
+        console.log('EEE',longestSubstr2(str1)); // output: 7
+        console.log('EEE',longestSubstr2(str6)); // output: 5
+
+
+    </script>
+</body>
+</html>
