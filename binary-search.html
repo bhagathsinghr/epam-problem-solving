@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var arr = [2,4,9,10,15,16,20,25,26,28,30,37,39,40,42,45,48,49,50,56];
+
+        function binarySearch(ar1, val) {
+            let start = 0;
+            let end = ar1.length - 1;
+            let middle = Math.floor((start + end)/2)
+
+            while(val !== ar1[middle]) {
+                if(val < ar1[middle]) {
+                    end = middle - 1;
+                } else {
+                    start = middle + 1;
+                }
+                middle = Math.floor((start + end)/2);
+            }
+            if(ar1[middle] === val) {
+                return middle;
+            }
+            return -1;
+        }
+
+        var res = binarySearch(arr, 39);
+        console.log(res);
+        console.log(arr);
+    </script>
+</body>
+</html>

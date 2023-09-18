@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+       // var arr = [5,9,7,6,2,5,13,45,95,46,52,10,4,3,8];
+        var arr = [7,1,2,3,4,5,6];
+        function bubblerSort(ar) {
+            let noSwap = false;
+            let c = 0;
+            for(let i = 0; i < ar.length; i++) {
+                noSwap = true;
+                for(let j = 0; j < ar.length - i - 1; j++) {
+                    console.log(ar, ar[j], ar[j + 1], c);
+                    c++;
+                    if(ar[j] > ar[j + 1]) {
+                        let temp = ar[j];
+                        ar[j] = ar[j + 1];
+                        ar[j + 1] = temp;
+                        noSwap = false;
+                    }
+                }
+                if(noSwap) {
+                    break;
+                }
+            }
+        }
+     
+        var res = bubblerSort(arr);
+        console.log(arr)
+    </script>
+</body>
+</html>
