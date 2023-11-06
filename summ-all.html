@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function getSubarraySums(arr) {
+            const subarraySums = [];
+            
+            for (let i = 0; i < arr.length; i++) {
+                let sum = 0;
+                
+                for (let j = i; j < arr.length; j++) {
+                    sum += arr[j];
+                    subarraySums.push(sum);
+                }
+            }
+            
+            return subarraySums;
+        }
+        const arr = [20, -5, -1];
+        const subarraySums = getSubarraySums(arr);
+        console.log(subarraySums);
+        // Output: [20, 15, -6, -5, -1, 14]
+    </script>
+</body>
+</html>

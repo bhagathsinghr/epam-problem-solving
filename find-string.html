@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function findStringFromLeft(str, txt) {
+            let len = str.length;
+            let index = -1;
+            let stInd = 0;
+            let txtInd = txt.length;
+
+            for(let i = 0; i < len; i++ ) {
+                if(str[i] === txt[stInd]) {
+                    stInd += 1;
+                }else {
+                    stInd = 0;
+                }
+                
+                if(txtInd === stInd) {
+                    index = i - txtInd + 1;
+                    break;
+                }
+            }
+            return index;
+        }
+
+        function filterStringFromLeft(str, txt) {
+            let len = str.length;
+            let index = [];
+            let stInd = 0;
+            let txtInd = txt.length;
+
+            for(let i = 0; i < len; i++ ) {
+                if(str[i] == txt[stInd]) {
+                    stInd += 1;
+                }else {
+                    stInd = 0;
+                }
+                if(txtInd === stInd) {
+                    index[index.length] = i - txtInd + 1;
+                    stInd = 0;
+                }
+            }
+            return index;
+        }
+
+
+        var res = findStringFromLeft('Bhagath singh', 'ngh');
+        var res2 = filterStringFromLeft('Bhagath singh rajisngh', 'ngh');
+
+        console.log(res);
+        console.log(res2);
+    </script>
+</body>
+</html>

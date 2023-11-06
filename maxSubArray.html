@@ -50,6 +50,24 @@
         console.log(maxSubarray2(array)); // Output: 6 (The maximum subarray is [4, -1, 2, 1])
         console.log('@@@ RES',mVal);
 
+        /*
+        Subarrays of size 4 are :
+        [2, 5, -1, 7], min + max = -1 + 7 = 6
+        [5, -1, 7, -3], min + max = -3 + 7 = 4
+        [-1, 7, -3, -1], min + max = -3 + 7 = 4
+        [7, -3, -1, -2], min + max = -3 + 7 = 4
+        Sum of all min & max = 6 + 4 + 4 + 4 = 18
+        Output - 18
+        A = [2, 5, 3, 7, 6]
+        B = 4Subarrays of size 4 are :
+        First [2, 5, 3, 7], min + max = 2 + 7 = 9
+        Second [5, 3, 7, 6], min + max = 3 + 7 = 10
+        Output 19
+        */
+
+        var mVal1 = maxSubArray([2, 5, -1, 7, -3, -1, -2]);
+        console.log('@@@ 1=',mVal1);
+
     </script>
 </body>
 </html>

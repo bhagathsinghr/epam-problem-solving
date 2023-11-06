@@ -7,7 +7,7 @@
 </head>
 <body>
     <script>
-        // Find the second smallest number from the given array: [10,9,2,5,3,7,101,18]. The answer is: 3
+        // Find the second smallest number from the given array: [10,9,2,5,3,7,101,18]. The answer is: 18
         function secondSmallestNumber(arr) {
             if(arr.length < 2) {
                 throw Error('Array lenght should be more than 1');
@@ -33,6 +33,23 @@
 
         const numbers = [10,9,2,5,3,7,101,18];
         console.log(secondSmallestNumber(numbers)); // Output: 3
+
+
+        function secondSmallNum(arr) {
+            let sm1 = arr[0] > arr[1] ? arr[0] : arr[1];
+            let sm2 = arr[0] > arr[1] ? arr[1] : arr[0];
+            
+            for(let i = 2; i < arr.length; i++) {
+                if(arr[i] > sm1 ) {
+                    sm1 = arr[i];
+                }else if(arr[i] < sm1  && sm2 > arr[i]) {
+                    sm2 = arr[i];
+                }
+            }
+            return sm2;
+        }
+        var rrr = secondSmallNum(numbers);
+        console.log('@@@ RES', rrr);
     </script>
 </body>
 </html>

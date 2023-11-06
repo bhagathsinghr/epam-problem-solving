@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function getSubarraySums(arr) {
+            const subArr = [];
+            for(let i = 0; i < arr.length; i++) {
+                let sum = 0;
+                for(let y = i; y < arr.length; y++) {
+                    sum += arr[y];
+                    subArr.push(sum);
+                }
+            }
+            return subArr;
+        }
+        const inputArray = [20, -5, -1];
+        const subarraySums = getSubarraySums(inputArray);
+        console.log(subarraySums);
+
+        // ====== Get max Sub-arrays ======
+
+        function getSubarrays(arr) {
+            const subarrays = [];
+            
+            for (let i = 0; i < arr.length; i++) {
+                for (let j = i + 1; j <= arr.length; j++) {
+                const subarray = arr.slice(i, j);
+                    subarrays.push(subarray);
+                }
+            }
+            
+            return subarrays;
+        }
+        
+
+        const subarrays = getSubarrays(inputArray);
+        console.log(subarrays);
+
+
+    </script>
+</body>
+</html>

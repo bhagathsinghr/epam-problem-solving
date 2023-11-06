@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var arr = [5,6,8,1,10,9,12,45,23,15];
+        
+        function selectionSort1(ar) {
+            for(let i = 0; i < ar.length; i++) {
+                let lowerInd = i;
+                for(let x = i + 1; x < ar.length; x++) {
+                    if(ar[x] < ar[lowerInd]) {
+                        lowerInd = x;
+                    }
+                }
+
+                if(i !== lowerInd) {
+                    let temp = ar[i];
+                    ar[i] = ar[lowerInd];
+                    ar[lowerInd] = temp;
+                }
+            }
+        }
+
+        function selectionSortEs6(ar) {
+            const swap = (ar1, a, b) => ([ar1[a], ar1[b]] = [ar1[b], ar1[a]]);
+
+            for(let i = 0; i < ar.length; i++) {
+                let lowerInd = i;
+                for(let x = i + 1; x < ar.length; x++) {
+                    if(ar[x] < ar[lowerInd]) {
+                        lowerInd = x;
+                    }
+                }
+                if(i !== lowerInd) swap(ar, i, lowerInd);
+            }
+        }
+
+       // var res = selectionSort1(arr);
+        var res = selectionSortEs6(arr);
+        console.log(arr);
+    </script>
+</body>
+</html>
