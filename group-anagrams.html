@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+
+        function sortChar(arr) {
+            return arr.split('').sort().join('');
+        }
+       
+        function findAnagramGroup(arr) {
+            if(arr.length == 1) {
+                return [arr];
+            }
+            let i = 0;
+            let len = arr.length;
+            let obj = {};
+            const res = [];
+
+            for(; i < len ; i++) {
+                let val = sortChar(arr[i]);
+                if(!obj[val]){
+                    obj[val] = [arr[i]];
+                }else {
+                    obj[val][obj[val].length]  = arr[i];
+                }
+            }
+           
+            for(let key in obj) {
+                res.push(obj[key])
+            }
+            return res
+        }
+
+       // var arr = ["eat","tea","tan","ate","nat","bat"];
+       var arr = ["eat","tab","tea","tan","ate","nat","bat"];
+        // Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+        var res = findAnagramGroup(arr);
+        // Output: [["eat","tea","ate"],["tab","bat"],["tan","nat"]]
+        console.log(res);
+        console.log(JSON.stringify(res));
+        
+    </script>
+</body>
+</html>
