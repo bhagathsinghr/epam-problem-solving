@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+       
+        Array.prototype.mySplice = function(index, position, ...rest) {
+            if(typeof index !== 'number' || typeof position !== 'number') {
+                throw 'index, or position is not number';
+            }
+            let arr = this;
+            let arrLen = arr.length;
+            let pos = position;
+            let ind = index;
+            let removedEle = [];
+
+            if(index < 0) {
+                ind = (arrLen + index) < 0 ? 0 : (arrLen + index);
+            } else if(index >= arrLen) {
+                ind = arrLen;
+            }
+
+            if(position < 0) {
+                pos = 0;
+            }else if((position + ind) > arrLen) {
+                    pos = arrLen - ind;
+            }
+            
+            if(ind === arrLen) {
+                pos = 0
+            }else if(ind === arrLen-1) {
+                pos = 1;
+            }
+
+           
+            let argsLen = rest.length;
+
+
+            let lElets = pos === 0 ? arrLen - 1 - ind - pos : (arrLen - 1 - ind) - pos;
+
+            let afterRemovedEle = [];
+            let rLen = ind + pos;
+
+            if(pos) {
+                for(let i = rLen; i < arrLen; i++) {
+                    afterRemovedEle[i] = arr[i]
+                }
+                for(let i = ind; i < rLen; i++) {
+                    removedEle[removedEle.length] = arr[i]
+                }
+            }else {
+                afterRemovedEle = this;
+            }
+            
+            let i = arrLen - 1 + argsLen - pos;
+            let newLength = i + 1;
+            
+            for(; i >= 0; i--) {
+                if(lElets !== -1) {
+                    arr[i] = afterRemovedEle[(lElets + ind + pos)]
+                    lElets--;
+                }else {
+                    if(argsLen-1 !== -1) {
+                        arr[i] = rest[argsLen-1]
+                        argsLen--
+                    }else {
+                        break;
+                    }
+                    
+                }
+            }
+            this.length = newLength;
+            return removedEle;
+        }
+
+
+        var arr = [1,2,3,4,5,6,7,8,9];
+        var arr2 = [1,2,3,4,5,6,7,8,9];
+        let ind = 5;
+        let pl = 0;
+       var sl = arr.splice(ind, pl, 10, 12);
+       var sl2 = arr2.mySplice(ind, pl, 10, 12);
+       // console.log(sl);
+       // console.log(sl);
+        console.log(arr);
+        console.log(arr2);
+        console.log(sl);
+        console.log(sl2);
+    </script>
+</body>
+</html>

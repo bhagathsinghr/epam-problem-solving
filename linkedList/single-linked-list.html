@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 14px;
+        }
+        * {
+            box-sizing: border-box;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        #lists {
+            list-style: none;
+            max-width: 229px;
+            padding: 0px;
+            margin: 0px;
+            padding-top: 15px;
+        }
+        #lists li {
+            display: flex;
+            justify-content: space-between;
+            line-height: 25px;
+            background-color: #f4f4f4;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #eae7e7;
+            border-left: 1px solid #eae7e7;
+            padding-left: 15px;
+            margin-bottom: 5px;
+        }
+        #lists li span:last-child {
+            cursor: pointer;
+            background-color: #f4f4f4;
+            width: 20px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+        .input-block {
+            display: flex;
+        }
+       
+        .input-ele {
+            padding-bottom: 10px;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="input-block">
+        <div class="input-ele">
+            <input type="text" id="txt">
+            <input type="number" id="txt2" style="width: 50px;">
+        </div>
+        <div class="btns">
+            <button class="r-btn">Add(+)</button>
+            <button class="r-btn">Remove First Item(-)</button>
+            <button class="r-btn">Remove Last Item(-)</button>
+            <button class="r-btn">Insert(+)</button>
+            <button class="r-btn">Insert Before(+)</button>
+            <button class="r-btn">Remove Last Item(-)</button>
+            <button class="r-btn">Remove Last Item(-)</button>
+        </div>
+    </div>
+    <ul id="lists">
+        
+    </ul>
+    <script src="../js/NodeList.js"></script>
+
+    <script>
+        var linkedList = new SingleLinkedList();
+            linkedList.push('Hi');
+            linkedList.push('Bhagath');
+            linkedList.push('How');
+            linkedList.push('are');
+            linkedList.push('you');
+            
+            var ul = document.querySelector('#lists');
+            var input = document.querySelector('#txt');
+            var btns = document.querySelectorAll('.r-btn');
+
+            function bindData(){
+                ul.innerHTML = '';
+                let current = linkedList.head;
+                while(current && current.next){
+                    ul.innerHTML += '<li><span>' + current.val + '</span><span>x</span></li>';
+                    current = current.next;
+                }
+                if(current && current.val) {
+                    ul.innerHTML += '<li><span>' + current.val + '</span><span>x</span> </li>';
+                }
+                bindRemoveEvent();
+            }
+
+            btns.forEach(function(btn, ind) {
+                btn.addEventListener('click', function() {
+                    if(ind === 0) {
+                        linkedList.push(input.value);
+                        input.value = '';
+                    }else if(ind === 1) {
+                        linkedList.shift();
+                    }else if(ind === 2) {
+                        linkedList.pop();
+                    }
+                    
+                    bindData();
+                });
+            })
+            
+            input.addEventListener('keyup', function(evt) {
+                let keyCode = evt.keyCode || evt.which;
+                if(keyCode === 13) {
+                    linkedList.push(input.value);
+                    input.value = '';
+                    bindData();
+                }
+            });
+            bindData();
+           
+            function bindRemoveEvent() {
+                let remBtn = document.querySelectorAll('#lists li span:last-child');
+                remBtn.forEach(function(ele, ind) {
+                    ele.addEventListener('click', function() {
+                       
+                    });
+                })
+            }
+
+            console.log(linkedList);
+    </script>
+</body>
+</html>
